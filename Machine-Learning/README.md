@@ -4,6 +4,8 @@ This folder contains the data preprocessing and model experimentation notebooks 
 
 I have removed the raw dataset files from this folder because they were too large can't upload them on the LMS or GitHub due to size limitation.
 
+Both datasets links are attached below!
+
 # Kaggle WELFake Dataset:
 https://www.kaggle.com/datasets/saurabhshahane/fake-news-classification
 
