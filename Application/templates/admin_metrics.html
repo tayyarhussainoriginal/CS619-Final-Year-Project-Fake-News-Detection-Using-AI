@@ -1,0 +1,94 @@
+{% extends "site_base.html" %}
+
+{% block content %}
+
+<h2>Model Performance Metrics</h2>
+
+<p style="color:#555; margin-bottom:20px;">
+Latest trained model evaluation results.
+</p>
+
+<table>
+    <tr>
+        <th>Metric</th>
+        <th>Value</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>Accuracy</td>
+        <td>{{ metrics.accuracy|floatformat:4 }}</td>
+        <td>Overall correctness of predictions.</td>
+    </tr>
+
+    <tr>
+        <td>Precision</td>
+        <td>{{ metrics.precision|floatformat:4 }}</td>
+        <td>How many predicted Fake/Real labels were correct.</td>
+    </tr>
+
+    <tr>
+        <td>Recall</td>
+        <td>{{ metrics.recall|floatformat:4 }}</td>
+        <td>How many actual classes were correctly detected.</td>
+    </tr>
+
+    <tr>
+        <td>F1 Score</td>
+        <td>{{ metrics.f1_score|floatformat:4 }}</td>
+        <td>Balanced score between Precision and Recall.</td>
+    </tr>
+</table>
+
+<br>
+
+<form action="{% url 'retrain_model' %}" method="post" id="retrainForm">
+    {% csrf_token %}
+
+    <button type="submit" class="primary" id="retrainBtn">
+        Retrain Model
+    </button>
+</form>
+
+<p id="loadingText"
+   style="display:none; color:#2a5298; margin-top:15px; font-weight:600;">
+   Retraining in progress... Please wait.
+</p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("retrainForm");
+    const btn = document.getElementById("retrainBtn");
+    const loading = document.getElementById("loadingText");
+
+    form.addEventListener("submit", function(e) {
+
+        const ok = confirm(
+            "Are you sure you want to retrain the model?\n\nThis may take some time."
+        );
+
+        if (!ok) {
+            e.preventDefault();
+            return;
+        }
+
+        btn.disabled = true;
+        btn.innerText = "Processing...";
+        loading.style.display = "block";
+    });
+
+});
+</script>
+
+<br>
+
+<div style="background:#f8f9fa; padding:18px; border-radius:14px;">
+    <h3 style="margin-bottom:10px;">Interpretation</h3>
+
+    <p>
+        Higher values indicate better model performance.
+    </p>
+</div>
+
+{% endblock %}

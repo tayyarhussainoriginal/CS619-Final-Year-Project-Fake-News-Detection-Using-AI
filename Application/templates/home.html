@@ -1,0 +1,75 @@
+{% extends "site_base.html" %}
+
+{% block content %}
+
+<h2>Analyze News Article</h2>
+
+<p style="color:#555; margin-bottom:20px;">
+Enter a news article below to check whether it is Real or Fake.
+</p>
+
+{% if error %}
+    <div class="error">
+        {{ error }}
+    </div>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+
+    <label><strong>News Text</strong></label>
+
+    <textarea name="news" rows="8" placeholder="Paste headline or article here...">{{ prefill_text }}</textarea>
+
+    <button type="submit" class="primary">Analyze News</button>
+</form>
+
+{% if result %}
+
+<hr>
+
+<h2>Prediction Result</h2>
+
+<table>
+    <tr>
+        <th>Prediction</th>
+        <th>Confidence</th>
+    </tr>
+
+    <tr>
+        <td>
+            {% if result == "Real" %}
+                 {{ result }}
+            {% else %}
+                 {{ result }}
+            {% endif %}
+        </td>
+
+        <td>{{ confidence|floatformat:2 }}%</td>
+    </tr>
+</table>
+
+{% endif %}
+
+{% if not user.is_authenticated %}
+
+<hr>
+
+<h3>Want full features?</h3>
+
+<p style="color:#555;">
+Create account to save history, charts, reports and unlimited analysis.
+</p>
+
+<a href="{% url 'login' %}">
+    <button type="button" class="primary">Login</button>
+</a>
+
+<a href="{% url 'register' %}">
+    <button type="button" class="primary">Register</button>
+</a>
+
+
+{% endif %}
+
+{% endblock %}

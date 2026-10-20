@@ -1,0 +1,73 @@
+{% extends "site_base.html" %}
+
+{% block content %}
+
+<h2>Prediction Visualization</h2>
+
+<p style="color:#555; margin-bottom:20px;">
+Graphical summary of your prediction history.
+</p>
+
+<div style="background:#fff; padding:20px; border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+    <canvas id="myChart" height="120"></canvas>
+</div>
+
+<br>
+
+<table>
+    <tr>
+        <th>Prediction Type</th>
+        <th>Total</th>
+    </tr>
+
+    <tr>
+        <td>Real</td>
+        <td>{{ real_count|default:0 }}</td>
+    </tr>
+
+    <tr>
+        <td>Fake</td>
+        <td>{{ fake_count|default:0 }}</td>
+    </tr>
+</table>
+
+<!-- Hidden JSON Data -->
+<script id="chart-data" type="application/json">
+{{ chart_data|safe }}
+</script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const rawData = document.getElementById('chart-data').textContent;
+    const data = JSON.parse(rawData);
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Real', 'Fake'],
+            datasets: [{
+                label: 'Predictions',
+                data: [data.real, data.fake],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+});
+</script>
+
+{% endblock %}

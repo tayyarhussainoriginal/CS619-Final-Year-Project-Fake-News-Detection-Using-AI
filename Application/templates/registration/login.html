@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Segoe UI, Arial, sans-serif;
+            background:linear-gradient(135deg,#1e3c72,#2a5298);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .card{
+            background:white;
+            width:95%;
+            max-width:450px;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            color:#1e3c72;
+            margin-bottom:20px;
+        }
+
+        p{
+            margin-bottom:12px;
+            color:#555;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-top:6px;
+            margin-bottom:16px;
+            border:1px solid #ddd;
+            border-radius:10px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#2a5298;
+            color:white;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            font-weight:600;
+            margin-top:10px;
+        }
+
+        button:hover{
+            background:#1e3c72;
+        }
+
+        .demo{
+            background:#f7f9fc;
+            padding:14px;
+            border-radius:12px;
+            margin-bottom:20px;
+            font-size:14px;
+        }
+
+        .link{
+            text-align:center;
+            margin-top:18px;
+        }
+
+        .link a{
+            color:#2a5298;
+            text-decoration:none;
+            font-weight:600;
+        }
+
+        .success{
+            background:#e8f8ef;
+            color:#1d7a46;
+            padding:12px;
+            border-radius:10px;
+            margin-bottom:15px;
+        }
+
+        .error{
+            background:#fdecec;
+            color:#c0392b;
+            padding:12px;
+            border-radius:10px;
+            margin-bottom:15px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2>Login</h2>
+
+    {% if messages %}
+    {% for message in messages %}
+        {% if forloop.first %}
+            <div class="{% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    <div class="demo">
+        <strong>Try Demo:</strong><br><br>
+        Test the system without creating account.
+    </div>
+
+    <a href="/home/?sample=u n seeks humanitarian pause in sanaa where streets battlegrounds geneva reuters the united nations called on monday for a humanitarian pause in the yemeni capital of sanaa on tuesday to allow civilians to leave their homes aid workers to reach them and the wounded to get medical care jamie mcgoldrick u n humanitarian coordinator in yemen said in a statement that the streets of sanaa had become battlegrounds and that aid workers remain in lockdown thus i call on all parties to the conflict to urgently enable a humanitarian pause on tuesday 5 december between 10 00 a m and 16 00 p m to allow civilians to leave their homes and seek assistance and protection and to facilitate the movement of aid workers to ensure the continuity of life saving programs he said mcgoldrick warned the warring parties that any deliberate attacks against civilians and against civilian and medical infrastructure are clear violations of international humanitarian law and may constitute war crimes">
+        <button type="button">Try Demo</button>
+    </a>
+
+    <br><br>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="link">
+        New user?
+        <a href="{% url 'register' %}">Create Account</a>
+    </div>
+
+</div>
+
+</body>
+</html>

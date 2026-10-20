@@ -1,0 +1,1 @@
+This directory is used for runtime media uploads. Dataset files are intentionally excluded from this repository.

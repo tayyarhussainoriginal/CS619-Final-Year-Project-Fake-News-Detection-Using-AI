@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake News Detection</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Segoe UI, Arial, sans-serif;
+            background:linear-gradient(135deg,#1e3c72,#2a5298);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:white;
+        }
+
+        .card{
+            background:white;
+            color:#222;
+            width:90%;
+            max-width:800px;
+            padding:50px;
+            border-radius:22px;
+            box-shadow:0 15px 40px rgba(0,0,0,0.2);
+            text-align:center;
+        }
+
+        h1{
+            font-size:42px;
+            margin-bottom:15px;
+            color:#1e3c72;
+        }
+
+        p{
+            font-size:18px;
+            color:#555;
+            line-height:1.7;
+            margin-bottom:25px;
+        }
+
+        .buttons{
+            margin-top:20px;
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+        button{
+            background:#2a5298;
+            color:white;
+            border:none;
+            padding:12px 20px;
+            margin:8px;
+            border-radius:10px;
+            cursor:pointer;
+            font-size:15px;
+            font-weight:600;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#1e3c72;
+            transform:translateY(-2px);
+        }
+
+        .features{
+            margin-top:35px;
+            text-align:left;
+            background:#f8f9fa;
+            padding:20px;
+            border-radius:14px;
+        }
+
+        .features h3{
+            color:#1e3c72;
+            margin-bottom:12px;
+        }
+
+        .features li{
+            margin-bottom:10px;
+            color:#333;
+        }
+
+        @media(max-width:768px){
+            .card{
+                padding:30px;
+            }
+
+            h1{
+                font-size:32px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>Fake News Detection System</h1>
+
+    <p>
+        Detect whether a news article is Real or Fake using Artificial Intelligence.
+    </p>
+
+    <div class="buttons">
+
+        <a href="{% url 'login' %}">
+            <button>Login</button>
+        </a>
+
+        <a href="{% url 'register' %}">
+            <button>Register</button>
+        </a>
+
+        <a href="/home/?sample=u n seeks humanitarian pause in sanaa where streets battlegrounds geneva reuters the united nations called on monday for a humanitarian pause in the yemeni capital of sanaa on tuesday to allow civilians to leave their homes aid workers to reach them and the wounded to get medical care jamie mcgoldrick u n humanitarian coordinator in yemen said in a statement that the streets of sanaa had become battlegrounds and that aid workers remain in lockdown thus i call on all parties to the conflict to urgently enable a humanitarian pause on tuesday 5 december between 10 00 a m and 16 00 p m to allow civilians to leave their homes and seek assistance and protection and to facilitate the movement of aid workers to ensure the continuity of life saving programs he said mcgoldrick warned the warring parties that any deliberate attacks against civilians and against civilian and medical infrastructure are clear violations of international humanitarian law and may constitute war crimes">
+            <button>Try Demo</button>
+        </a>
+
+    </div>
+
+    <div class="features">
+        <h3>System Features</h3>
+
+        <ul>
+            <li>AI-based Real / Fake news prediction</li>
+            <li>Confidence score</li>
+            <li>Prediction history</li>
+            <li>Charts & reports</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

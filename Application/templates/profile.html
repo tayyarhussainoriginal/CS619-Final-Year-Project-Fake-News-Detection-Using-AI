@@ -1,0 +1,35 @@
+{% extends "site_base.html" %}
+
+{% block content %}
+
+<h2>My Profile</h2>
+
+<p style="color:#555; margin-bottom:20px;">
+Update your account information below.
+</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label><strong>Username</strong></label>
+    <input type="text" name="username" value="{{ request.user.username }}">
+
+    <label><strong>Email Address</strong></label>
+    <input type="email" name="email" value="{{ user.email }}">
+
+    <p style="font-size:14px; color:#777;">
+        Email is optional but recommended for future notifications.
+    </p>
+
+    <button type="submit" class="primary">Update Profile</button>
+</form>
+
+<hr>
+
+<h3>Security Settings</h3>
+
+<a href="{% url 'change_password' %}">
+    <button class="primary">Change Password</button>
+</a>
+
+{% endblock %}

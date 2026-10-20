@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Segoe UI, Arial, sans-serif;
+            background:linear-gradient(135deg,#1e3c72,#2a5298);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .card{
+            background:white;
+            width:95%;
+            max-width:460px;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            color:#1e3c72;
+            margin-bottom:20px;
+        }
+
+        p{
+            margin-bottom:12px;
+            color:#555;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-top:6px;
+            margin-bottom:16px;
+            border:1px solid #ddd;
+            border-radius:10px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#2a5298;
+            color:white;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            font-weight:600;
+        }
+
+        button:hover{
+            background:#1e3c72;
+        }
+
+        .note{
+            background:#f8f9fa;
+            padding:14px;
+            border-radius:12px;
+            margin-bottom:18px;
+            font-size:14px;
+        }
+
+        .link{
+            text-align:center;
+            margin-top:18px;
+        }
+
+        .link a{
+            color:#2a5298;
+            text-decoration:none;
+            font-weight:600;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2>Create Account</h2>
+
+    <div class="note">
+        Register to unlock full features like history, charts, exports and unlimited analysis.
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+
+    <div class="link">
+        Already have an account?
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+
+</div>
+
+</body>
+</html>

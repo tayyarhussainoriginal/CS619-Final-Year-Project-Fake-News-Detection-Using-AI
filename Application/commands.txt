@@ -1,0 +1,53 @@
+1. Start a Django project
+django-admin startproject project_name
+
+Purpose:
+Creates the basic Django project structure.
+
+2. Create a Django application
+python manage.py startapp app_name
+
+Purpose:
+Creates an application containing components such as models, views, and other app logic.
+
+3. Run the development server
+python manage.py runserver
+
+Purpose:
+Starts Django's local development server.
+
+4. Create migrations
+python manage.py makemigrations
+
+Purpose:
+Detects changes in Django models and creates migration files describing those changes.
+
+5. Apply migrations
+python manage.py migrate
+
+Purpose:
+Applies migration files to the database and creates/updates database tables.
+
+6. Create a superuser
+python manage.py createsuperuser
+
+Purpose:
+Creates an administrative account for Django's admin interface.
+
+7. Open Django shell
+python manage.py shell
+
+Purpose:
+Opens an interactive Python shell with the Django project environment loaded.
+
+8. Check project configuration
+python manage.py check
+
+Purpose:
+Checks the project for common configuration and application problems.
+
+9. Run tests
+python manage.py test
+
+Purpose:
+Runs the Django test suite.

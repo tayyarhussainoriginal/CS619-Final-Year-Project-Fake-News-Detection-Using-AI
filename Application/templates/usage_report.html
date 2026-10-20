@@ -1,0 +1,80 @@
+{% extends "site_base.html" %}
+
+{% block content %}
+
+<h2>System Usage Report</h2>
+
+<p style="color:#555; margin-bottom:20px;">
+Administrative overview of users and prediction activity.
+</p>
+
+<table>
+    <tr>
+        <th>Statistic</th>
+        <th>Value</th>
+    </tr>
+
+    <tr>
+        <td>Total Users</td>
+        <td>{{ total_users }}</td>
+    </tr>
+
+    <tr>
+        <td>Total Predictions</td>
+        <td>{{ total_predictions }}</td>
+    </tr>
+
+    <tr>
+        <td>Fake Predictions</td>
+        <td>{{ fake_count }}</td>
+    </tr>
+
+    <tr>
+        <td>Real Predictions</td>
+        <td>{{ real_count }}</td>
+    </tr>
+</table>
+
+<br>
+
+<h3>Predictions Per User</h3>
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Total Predictions</th>
+    </tr>
+
+    {% for user in predictions_per_user %}
+    <tr>
+        <td>{{ user.user__username }}</td>
+        <td>{{ user.total }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+
+<h3>Analyses Per Day</h3>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Total Analyses</th>
+    </tr>
+
+    {% for row in daily_stats %}
+    <tr>
+        <td>{{ row.date }}</td>
+        <td>{{ row.total }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+
+<a href="{% url 'download_report' %}">
+    <button class="primary">Download System Usage Report</button>
+</a>
+
+{% endblock %}

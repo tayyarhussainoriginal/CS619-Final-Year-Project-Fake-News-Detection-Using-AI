@@ -1,0 +1,68 @@
+{% extends "site_base.html" %}
+
+{% block content %}
+
+<h2>Prediction History</h2>
+
+<p style="color:#555; margin-bottom:20px;">
+View all previously analyzed news articles and prediction results.
+</p>
+
+{% if predictions %}
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>News Text</th>
+        <th>Prediction</th>
+        <th>Confidence</th>
+    </tr>
+
+    {% for item in predictions %}
+    <tr>
+        <td>{{ item.analysis_date }}</td>
+
+        <td>
+            <details>
+                <summary style="cursor:pointer; color:#2a5298;">
+                    View News Text
+                </summary>
+
+                <div style="margin-top:10px; line-height:1.6;">
+                    {{ item.input_text }}
+                </div>
+            </details>
+        </td>
+
+        <td>
+            {% if item.prediction_result == "Real" %}
+                 Real
+            {% else %}
+                 Fake
+            {% endif %}
+        </td>
+
+        <td>{{ item.confidence_score|floatformat:2 }}%</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+
+<a href="{% url 'export_history' %}">
+    <button class="primary">Download Prediction History</button>
+</a>
+
+<a href="{% url 'history_chart' %}">
+    <button class="primary">Vizualize Prediction History</button>
+</a>
+
+{% else %}
+
+<div class="error">
+    No prediction history available.
+</div>
+
+{% endif %}
+
+{% endblock %}
